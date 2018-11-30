@@ -3783,19 +3783,31 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _test__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test */ \"./src/js/test.js\");\n// Global app controller\r\n\r\nconst x = 23;\r\nconsole.log(`i imported ${_test__WEBPACK_IMPORTED_MODULE_0__[\"default\"]} from another module called test.js!Variable x is ${x} `);\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _models_Search__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./models/Search */ \"./src/js/models/Search.js\");\n/* harmony import */ var _views_searchViews__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views/searchViews */ \"./src/js/views/searchViews.js\");\n// Global app controller\r\n\r\n\r\n\r\nconsole.log(`Using imported functions! ${Object(_views_searchViews__WEBPACK_IMPORTED_MODULE_1__[\"add\"])(_views_searchViews__WEBPACK_IMPORTED_MODULE_1__[\"ID\"],2)} and ${Object(_views_searchViews__WEBPACK_IMPORTED_MODULE_1__[\"multiply\"])(3,5)}. ${str}}`);\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ }),
 
-/***/ "./src/js/test.js":
-/*!************************!*\
-  !*** ./src/js/test.js ***!
-  \************************/
+/***/ "./src/js/models/Search.js":
+/*!*********************************!*\
+  !*** ./src/js/models/Search.js ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconsole.log('imported module');\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (123345345);\n\n//# sourceURL=webpack:///./src/js/test.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (\"I am a exported string.\");\n\n//# sourceURL=webpack:///./src/js/models/Search.js?");
+
+/***/ }),
+
+/***/ "./src/js/views/searchViews.js":
+/*!*************************************!*\
+  !*** ./src/js/views/searchViews.js ***!
+  \*************************************/
+/*! exports provided: add, multiply, ID */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"add\", function() { return add; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"multiply\", function() { return multiply; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ID\", function() { return ID; });\nconst add = (a, b) => a + b;\r\nconst multiply = (a, b) => a * b;\r\nconst ID = 23;\n\n//# sourceURL=webpack:///./src/js/views/searchViews.js?");
 
 /***/ }),
 
