@@ -6,20 +6,27 @@
 //624a6b312a1abed6cf2bd597b50709fa
 //https://www.food2fork.com/api/search
 import Search from './models/Search';
+import * as searchViews from './views/searchViews';
+import { elements } from './views/base';
 
 const state = {
 
 };
 const controlSearch = async() => {
-    const query = "pizza"
+    const query = searchViews.getInput();
+    console.log('query :', query);
     if (query) {
         state.search = new Search(query);
+
+        searchViews.clearInputs();
+        searchViews.clarResults();
         await state.search.getResults();
-        console.log('state.search.results :', state.search.results);
+        searchViews.renderResults(state.search.result)
+        console.log('state.search.results :', state.search.result);
     }
 
 }
-document.querySelector(".search").addEventListener("submit", e => {
+elements.searchForm.addEventListener("submit", e => {
     e.preventDefault();
     controlSearch();
 })
