@@ -19,7 +19,7 @@ const controlSearch = async() => {
     }
 
 }
-document.querySelector(
-    ".search").addEventListener("submit", e => {
+document.querySelector(".search").addEventListener("submit", e => {
     e.preventDefault();
+    controlSearch();
 })

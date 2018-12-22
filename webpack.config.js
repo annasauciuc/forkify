@@ -8,7 +8,10 @@ module.exports = {
         filename: 'js/bundle.js'
     },
     devServer: {
-        contentBase: './dist'
+        contentBase: './dist',
+        headers: { 'Access-Control-Allow-Origin': '*' },
+        https: false,
+        disableHostCheck: true
     },
     plugins: [
         new HtmlWebpackPlugin({
