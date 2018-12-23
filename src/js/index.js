@@ -41,4 +41,46 @@ elements.searchRes.addEventListener("click", e => {
         console.log('btn :', goToPage);
     }
 
-})
+});
+/** 
+ * RECIPE CONTROLLER
+ */
+const controlRecipe = async() => {
+    // Get ID from url
+    const id = window.location.hash.replace('#', '');
+
+    if (id) {
+        // Prepare UI for changes
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
+
+        // Highlight selected search item
+        if (state.search) searchView.highlightSelected(id);
+
+        // Create new recipe object
+        state.recipe = new Recipe(id);
+
+        try {
+            // Get recipe data and parse ingredients
+            await state.recipe.getRecipe();
+            state.recipe.parseIngredients();
+
+            // Calculate servings and time
+            state.recipe.calcTime();
+            state.recipe.calcServings();
+
+            // Render recipe
+            clearLoader();
+            recipeView.renderRecipe(
+                state.recipe,
+                state.likes.isLiked(id)
+            );
+
+        } catch (err) {
+            console.log(err);
+            alert('Error processing recipe!');
+        }
+    }
+};
+
+['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
