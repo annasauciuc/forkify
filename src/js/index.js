@@ -6,6 +6,7 @@
 //624a6b312a1abed6cf2bd597b50709fa
 //https://www.food2fork.com/api/search
 import Search from './models/Search';
+import Recipe from './models/Recipe';
 import * as searchViews from './views/searchViews';
 import { elements, renderLoader, clearLoader } from './views/base';
 
@@ -23,7 +24,7 @@ const controlSearch = async() => {
         await state.search.getResults();
         clearLoader();
         searchViews.renderResults(state.search.result);
-        console.log('state.search.results :', state.search.result);
+
     }
 
 }
@@ -32,5 +33,12 @@ elements.searchForm.addEventListener("submit", e => {
     controlSearch();
 });
 elements.searchRes.addEventListener("click", e => {
-    console.log('e.target :', e.target);
+    const btn = e.target.closest(".btn-inline");
+    if (btn) {
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        searchViews.clearResults();
+        searchViews.renderResults(state.search.result.goToPage);
+        console.log('btn :', goToPage);
+    }
+
 })
