@@ -7,7 +7,7 @@
 //https://www.food2fork.com/api/search
 import Search from './models/Search';
 import * as searchViews from './views/searchViews';
-import { elements } from './views/base';
+import { elements, renderLoader, clearLoader } from './views/base';
 
 const state = {
 
@@ -17,11 +17,12 @@ const controlSearch = async() => {
     console.log('query :', query);
     if (query) {
         state.search = new Search(query);
-
         searchViews.clearInputs();
-        searchViews.clarResults();
+        searchViews.clearResults();
+        renderLoader(elements.searchRes)
         await state.search.getResults();
-        searchViews.renderResults(state.search.result)
+        clearLoader();
+        searchViews.renderResults(state.search.result);
         console.log('state.search.results :', state.search.result);
     }
 
