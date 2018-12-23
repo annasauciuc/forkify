@@ -30,4 +30,7 @@ const controlSearch = async() => {
 elements.searchForm.addEventListener("submit", e => {
     e.preventDefault();
     controlSearch();
+});
+elements.searchRes.addEventListener("click", e => {
+    console.log('e.target :', e.target);
 })
